@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Miss G Foundation</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -10,60 +10,104 @@
 
   <!-- Header and Navigation -->
   <header>
-    <h1>Miss G Foundation</h1>
-    <p class="slogan">Empowering Bushbuckridge Through Purpose</p>
-    <nav>
-      <ul>
-        <li><a href="university.html">University Applications</a></li>
-        <li><a href="talks.html">Career Talks</a></li>
-        <li><a href="churches.html">Churches</a></li>
-        <li><a href="campaigns.html">Campaigns</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="container">
+      <h1 class="logo">Miss G Foundation</h1>
+      <p class="slogan">Empowering Bushbuckridge Through Purpose</p>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="university.html">Applications</a></li>
+          <li><a href="talks.html">Talks</a></li>
+          <li><a href="churches.html">Churches</a></li>
+          <li><a href="campaigns.html">Campaigns</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
-    <h2>Empowering Communities. Changing Lives.</h2>
-    <p>We serve Bushbuckridge through education, outreach, and spiritual upliftment.</p>
+    <div class="container">
+      <h2>Empowering Communities. Changing Lives.</h2>
+      <p>Supporting youth and communities in Bushbuckridge through education, inspiration, and faith-based outreach.</p>
+    </div>
   </section>
 
-  <!-- Team Section -->
+  <!-- Mission Section -->
+  <section class="section" id="mission">
+    <div class="container">
+      <h2>Our Mission</h2>
+      <p>
+        We exist to equip and uplift youth and families in Bushbuckridge through impactful university application drives,
+        career mentorship, school visits, church outreach, and community campaigns. Our goal is to nurture knowledge, confidence,
+        and faith in every individual we serve.
+      </p>
+    </div>
+  </section>
+
+  <!-- Programs Section -->
+  <section class="section light" id="programs">
+    <div class="container">
+      <h2>What We Do</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>University Applications</h3>
+          <p>Helping learners apply to tertiary institutions by guiding document preparation and access to opportunities.</p>
+          <a href="university.html" class="button">Learn More</a>
+        </div>
+        <div class="card">
+          <h3>Motivation & Career Talks</h3>
+          <p>Inviting schools to host our team for motivational talks, subject selection help, and mentoring.</p>
+          <a href="talks.html" class="button">Invite Us</a>
+        </div>
+        <div class="card">
+          <h3>Church Programs</h3>
+          <p>Partnering with churches for youth worship nights, Sunday school events, and talks for parents and young adults.</p>
+          <a href="churches.html" class="button">View Details</a>
+        </div>
+        <div class="card">
+          <h3>Community Campaigns</h3>
+          <p>Hosting campaigns on social issues in collaboration with social workers, SANCA, and other partners.</p>
+          <a href="campaigns.html" class="button">Get Involved</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!-- Team Section -->
   <section class="section" id="team">
-    <h2>Our Team</h2>
-    <p><strong>Founder:</strong> Miss G</p>
-    <p><strong>Co-Founder:</strong> [Add Name]</p>
-    <p><strong>Members:</strong> [List Member Names Here]</p>
+    <div class="container">
+      <h2>Meet the Team</h2>
+      <p><strong>Founder:</strong> Miss G</p>
+      <p><strong>Co-Founder:</strong> [Add Co-Founder Name]</p>
+      <p><strong>Team Members:</strong> [List your team members here]</p>
+    </div>
   </section>
-
   <!-- Contact Section -->
-  <section class="section" id="contact">
-    <h2>Contact Us</h2>
-    <p>Send us a message directly:</p>
+  <section class="section light" id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Use the form below or reach out on WhatsApp or phone.</p>
+      <form action="https://formsubmit.co/YOUR_EMAIL@example.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://yourdomain.com/thankyou.html">
 
-    <!-- Contact Form (FormSubmit integration) -->
-    <form action="https://formsubmit.co/YOUR_EMAIL@example.com" method="POST">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://yourdomain.com/thankyou.html">
-
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
-
-      <button type="submit">Send Message</button>
-    </form>
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="button">Send Message</button>
+      </form>
+      <p><strong>Phone:</strong> +27 YOUR_NUMBER</p>
+      <p><strong>Email:</strong> your@email.com</p>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Miss G Foundation. All rights reserved.</p>
-    <p>Phone: +27 YOUR_NUMBER | Email: your@email.com</p>
+    <div class="container">
+      <p>&copy; 2025 Miss G Foundation. All rights reserved.</p>
+    </div>
   </footer>
 
 </body>
