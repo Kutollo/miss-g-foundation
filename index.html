@@ -6,10 +6,10 @@
   <title>Miss G Foundation</title>
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', sans-serif;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
     }
 
     body {
@@ -19,17 +19,16 @@
 
     header {
       background: #fff;
-      padding: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 15px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 999;
     }
 
     .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 20px;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
     .nav {
@@ -40,49 +39,60 @@
 
     .logo {
       font-size: 24px;
-      color: #c2185b;
       font-weight: bold;
+      color: #c2185b;
     }
 
-    nav ul {
-      list-style: none;
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #333;
+      margin: 4px 0;
+      transition: 0.3s ease;
+    }
+
+    nav {
       display: flex;
-      align-items: center;
+      gap: 20px;
     }
 
-    nav ul li {
-      position: relative;
-      margin-left: 20px;
-    }
-
-    nav ul li a {
+    nav a {
       text-decoration: none;
       color: #333;
-      padding: 8px 12px;
-      display: block;
+      padding: 8px 10px;
+      transition: 0.3s;
     }
 
-    nav ul li:hover > ul {
-      display: block;
+    nav a:hover {
+      color: #c2185b;
     }
 
-    nav ul ul {
-      display: none;
-      position: absolute;
-      background: #fff;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      top: 35px;
-      left: 0;
-      min-width: 180px;
-      z-index: 1000;
-    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 10px;
+      }
 
-    nav ul ul li {
-      margin: 0;
-    }
+      nav.open {
+        display: flex;
+      }
 
-    nav ul ul li a:hover {
-      background: #f4f4f4;
+      .menu-toggle {
+        display: flex;
+      }
     }
 
     .hero {
@@ -99,7 +109,7 @@
 
     .hero p {
       font-size: 18px;
-      color: #444;
+      color: #555;
       margin-bottom: 20px;
     }
 
@@ -109,12 +119,15 @@
       padding: 10px 20px;
       text-decoration: none;
       border-radius: 5px;
-      font-weight: bold;
     }
 
     .section {
       padding: 40px 20px;
       background: white;
+    }
+
+    .section:nth-child(even) {
+      background: #f9f9f9;
     }
 
     .section h2 {
@@ -127,23 +140,6 @@
       color: white;
       text-align: center;
       padding: 20px;
-      margin-top: 40px;
-    }
-
-    @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav ul li {
-        margin-left: 0;
-      }
-
-      nav ul ul {
-        position: static;
-        box-shadow: none;
-      }
     }
   </style>
 </head>
@@ -152,26 +148,15 @@
   <header>
     <div class="container nav">
       <div class="logo">Miss G Foundation</div>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a>
-            <ul>
-              <li><a href="#mission">Mission</a></li>
-              <li><a href="#vision">Vision</a></li>
-              <li><a href="#values">Values</a></li>
-              <li><a href="#team">Team</a></li>
-            </ul>
-          </li>
-          <li><a href="#programs">Programs</a>
-            <ul>
-              <li><a href="#schools">Schools</a></li>
-              <li><a href="#church">Churches</a></li>
-              <li><a href="#campaigns">Campaigns</a></li>
-              <li><a href="#applications">Applications</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav id="nav">
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -189,42 +174,25 @@
     </div>
   </section>
 
-  <section id="programs" class="section" style="background:#f9f9f9;">
+  <section id="programs" class="section">
     <div class="container">
-      <h2>Our Programs</h2>
+      <h2>Programs</h2>
       <ul>
-        <li id="schools"><strong>Motivation & Career Talks:</strong> School partnerships for learner development.</li>
-        <li id="church"><strong>Church Programs:</strong> Worship nights and Sunday school support.</li>
-        <li id="campaigns"><strong>Community Campaigns:</strong> Awareness on gender, mental health, and more.</li>
-        <li id="applications"><strong>University Help:</strong> Application and mentorship for post-school opportunities.</li>
+        <li><strong>Motivation & Career Talks:</strong> Inspiring learners with subject and career guidance.</li>
+        <li><strong>Church Programs:</strong> Youth worship, Sunday school, family development talks.</li>
+        <li><strong>Community Campaigns:</strong> Awareness on GBV, substance abuse, and mental health.</li>
+        <li><strong>University Help:</strong> Support for applications, bursaries, and learnerships.</li>
       </ul>
-    </div>
-  </section>
-
-  <section id="mission" class="section">
-    <div class="container">
-      <h2>Mission, Vision & Values</h2>
-      <p><strong>Mission:</strong> To empower youth and families through holistic development and spiritual purpose.</p>
-      <p><strong>Vision:</strong> A generation rising in purpose, leading transformation across South Africa.</p>
-      <p id="values"><strong>Values:</strong> Faith, Compassion, Empowerment, Integrity, and Community.</p>
-    </div>
-  </section>
-
-  <section id="team" class="section" style="background:#f9f9f9;">
-    <div class="container">
-      <h2>Meet the Team</h2>
-      <p><strong>Founder:</strong> Miss G</p>
-      <p><strong>Co-Founder:</strong> [Insert Name]</p>
-      <p><strong>Core Team:</strong> [List core team members]</p>
     </div>
   </section>
 
   <section id="contact" class="section">
     <div class="container">
       <h2>Contact Us</h2>
-      <p>Email: [Insert email address]</p>
-      <p>Phone: [Insert phone number]</p>
-      <p>Location: Bushbuckridge, South Africa</p>
+      <p><strong>Location:</strong> Bushbuckridge, South Africa</p>
+      <p><strong>Email:</strong> [Insert email]</p>
+      <p><strong>Phone:</strong> [Insert phone number]</p>
+      <p>Follow us on social media for updates and inspiration!</p>
     </div>
   </section>
 
@@ -232,5 +200,12 @@
     &copy; 2025 Miss G Foundation. All rights reserved.
   </footer>
 
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+  </script>
 </body>
-      </html>
+</html>
