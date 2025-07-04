@@ -9,7 +9,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Segoe UI", sans-serif;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     body {
@@ -18,107 +18,61 @@
     }
 
     header {
-      background: #fff;
+      background-color: #6a1b9a;
+      color: #fff;
       padding: 15px 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 999;
     }
 
     .container {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      max-width: 1000px;
+      margin: auto;
     }
 
     .logo {
-      font-size: 24px;
+      font-size: 1.5rem;
       font-weight: bold;
-      color: #c2185b;
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      height: 3px;
-      width: 25px;
-      background: #333;
-      margin: 4px 0;
-      transition: 0.3s ease;
     }
 
     nav {
       display: flex;
-      gap: 20px;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
-    nav a {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background-color: #7b1fa2;
+      width: 100%;
+    }
+
+    .nav-links a {
+      color: white;
+      padding: 12px 20px;
       text-decoration: none;
-      color: #333;
-      padding: 8px 10px;
-      transition: 0.3s;
+      border-top: 1px solid #9c27b0;
     }
 
-    nav a:hover {
-      color: #c2185b;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        background: #fff;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        width: 200px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        padding: 10px;
-      }
-
-      nav.open {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
+    .hamburger {
+      display: block;
+      font-size: 24px;
+      cursor: pointer;
     }
 
     .hero {
-      background: #fce4ec;
-      padding: 60px 20px;
       text-align: center;
+      padding: 80px 20px;
+      background: #e1bee7;
     }
 
     .hero h1 {
-      color: #c2185b;
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #555;
+      font-size: 2.2rem;
       margin-bottom: 20px;
-    }
-
-    .btn {
-      background: #c2185b;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
+      color: #4a148c;
     }
 
     .section {
@@ -126,86 +80,222 @@
       background: white;
     }
 
-    .section:nth-child(even) {
-      background: #f9f9f9;
+    .section h2 {
+      color: #6a1b9a;
+      margin-bottom: 15px;
     }
 
-    .section h2 {
-      color: #c2185b;
-      margin-bottom: 20px;
+    .section ul {
+      margin-left: 20px;
     }
 
     footer {
-      background: #c2185b;
-      color: white;
       text-align: center;
+      background: #4a148c;
+      color: white;
       padding: 20px;
+    }
+
+    .btn {
+      background: #6a1b9a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    @media(min-width: 768px) {
+      .nav-links {
+        display: flex !important;
+        flex-direction: row;
+        background: none;
+        width: auto;
+      }
+
+      .nav-links a {
+        border: none;
+        margin-left: 20px;
+      }
+
+      .hamburger {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="container nav">
+<header>
+  <div class="container">
+    <nav>
       <div class="logo">Miss G Foundation</div>
-      <div class="menu-toggle" id="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <nav id="nav">
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <div class="nav-links" id="navLinks">
         <a href="#about">About</a>
         <a href="#programs">Programs</a>
+        <a href="#mission">Mission</a>
+        <a href="#goals">Goals</a>
+        <a href="#swot">SWOT</a>
         <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+      </div>
+    </nav>
+  </div>
+</header>
 
-  <section class="hero">
+<section class="hero">
+  <div class="container">
     <h1>Empowering Bushbuckridge Through Purpose</h1>
-    <p>Inspiring and equipping youth and families for a brighter future.</p>
+    <p>We equip and inspire youth with education, mentorship & faith.</p>
     <a href="#contact" class="btn">Get Involved</a>
-  </section>
+  </div>
+</section>
 
-  <section id="about" class="section">
-    <div class="container">
-      <h2>About Us</h2>
-      <p>Miss G Foundation is a youth-centered, faith-driven nonprofit based in Bushbuckridge. We focus on education, mentorship, and community transformation through purpose and spiritual growth.</p>
-    </div>
-  </section>
+<section id="about" class="section">
+  <div class="container">
+    <h2>About Us</h2>
+    <p>Miss G Foundation is a youth-centered, faith-driven nonprofit rooted in Bushbuckridge, South Africa. We empower young people and families through education, mentorship, and community programs—anchored in faith and purpose.</p>
+  </div>
+</section>
 
-  <section id="programs" class="section">
-    <div class="container">
-      <h2>Programs</h2>
-      <ul>
-        <li><strong>Motivation & Career Talks:</strong> Inspiring learners with subject and career guidance.</li>
-        <li><strong>Church Programs:</strong> Youth worship, Sunday school, family development talks.</li>
-        <li><strong>Community Campaigns:</strong> Awareness on GBV, substance abuse, and mental health.</li>
-        <li><strong>University Help:</strong> Support for applications, bursaries, and learnerships.</li>
-      </ul>
-    </div>
-  </section>
+<section id="programs" class="section" style="background:#f3e5f5;">
+  <div class="container">
+    <h2>What We Do</h2>
+    <ul>
+      <li><strong>Motivation & Career Talks:</strong> Helping learners choose wisely and dream big.</li>
+      <li><strong>Church Programs:</strong> Youth worship nights, Sunday school, family talks.</li>
+      <li><strong>Community Campaigns:</strong> Tackling gender-based violence, mental health, and more.</li>
+      <li><strong>University Application Help:</strong> Supporting matriculants with applications and access.</li>
+    </ul>
+  </div>
+</section>
 
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <p><strong>Location:</strong> Bushbuckridge, South Africa</p>
-      <p><strong>Email:</strong> [Insert email]</p>
-      <p><strong>Phone:</strong> [Insert phone number]</p>
-      <p>Follow us on social media for updates and inspiration!</p>
-    </div>
-  </section>
+<section id="mission" class="section" style="background:#fce4ec;">
+  <div class="container">
+    <h2>Mission, Vision & Values</h2>
+    <p><strong>🌟 Mission:</strong> To empower youth and families in Bushbuckridge through holistic education, spiritual guidance, and life-enriching opportunities.</p>
+    <p><strong>👁 Vision:</strong> A purpose-driven generation equipped to lead, grow, and transform communities across South Africa.</p>
+    <p><strong>💖 Core Values:</strong></p>
+    <ul>
+      <li><strong>Faith:</strong> We are grounded in faith and driven by divine purpose.</li>
+      <li><strong>Compassion:</strong> We serve with love, empathy, and respect.</li>
+      <li><strong>Empowerment:</strong> We build confidence, leadership, and opportunity.</li>
+      <li><strong>Integrity:</strong> We lead with honesty, transparency, and trust.</li>
+      <li><strong>Community:</strong> We believe transformation begins locally.</li>
+    </ul>
+  </div>
+</section>
 
-  <footer>
-    &copy; 2025 Miss G Foundation. All rights reserved.
-  </footer>
+<section id="goals" class="section">
+  <div class="container">
+    <h2>Goals & Objectives</h2>
+    <p><strong>📌 Short-Term Goals (2025–2026):</strong></p>
+    <ul>
+      <li>Expand partnerships with at least 20 schools in the region</li>
+      <li>Launch a mentorship program for matriculants and young women</li>
+      <li>Run 4+ community campaigns annually on key social issues</li>
+    </ul>
+    <p><strong>📈 Long-Term Objectives:</strong></p>
+    <ul>
+      <li>Establish a Youth Empowerment Centre in Bushbuckridge</li>
+      <li>Build a sustainable bursary and scholarship fund</li>
+      <li>Develop a long-term volunteer and donor engagement model</li>
+    </ul>
+  </div>
+</section>
 
-  <script>
-    const toggle = document.getElementById('menu-toggle');
-    const nav = document.getElementById('nav');
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
-    });
-  </script>
+<section id="swot" class="section" style="background:#f3e5f5;">
+  <div class="container">
+    <h2>SWOT Analysis</h2>
+    <table>
+      <thead>
+        <tr style="background-color: #ce93d8;">
+          <th>Strengths</th>
+          <th>Weaknesses</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Strong grassroots presence in Bushbuckridge</td>
+          <td>Limited financial resources</td>
+        </tr>
+        <tr>
+          <td>Faith-driven mission with community trust</td>
+          <td>No permanent office or facility</td>
+        </tr>
+        <tr>
+          <td>Dedicated and passionate volunteer team</td>
+          <td>Small digital/marketing footprint</td>
+        </tr>
+        <tr>
+          <td>Diverse community engagement programs</td>
+          <td>Reliance on founder’s network</td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr style="background-color: #ce93d8;">
+          <th>Opportunities</th>
+          <th>Threats</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Form new partnerships with NGOs and schools</td>
+          <td>Unreliable funding or donor burnout</td>
+        </tr>
+        <tr>
+          <td>Rising awareness of youth development needs</td>
+          <td>Local socio-economic instability or violence</td>
+        </tr>
+        <tr>
+          <td>Leverage social media for storytelling</td>
+          <td>Competition with larger NGOs</td>
+        </tr>
+        <tr>
+          <td>Apply for grants, bursaries, and government support</td>
+          <td>Infrastructure and transport challenges in rural areas</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p><strong>Email:</strong> [Insert email]</p>
+    <p><strong>Phone:</strong> [Insert number]</p>
+    <p><strong>Location:</strong> Bushbuckridge, South Africa</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Miss G Foundation | Powered by Purpose</p>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+  }
+</script>
+
 </body>
-</html>
+  </html>
