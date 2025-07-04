@@ -66,10 +66,11 @@
       flex-direction: column;
       background: var(--primary);
       position: absolute;
-      top: 70px;
+      top: 100%;
       left: 0;
       width: 100%;
       padding: 1rem 2rem;
+      transition: all 0.3s ease-in-out;
     }
 
     .mobile-menu a {
@@ -215,6 +216,21 @@
       .hamburger {
         display: block;
       }
+
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        background: var(--primary);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 2rem;
+      }
+
+      .mobile-menu.show {
+        display: flex;
+      }
     }
   </style>
 </head>
@@ -228,6 +244,7 @@
     <a href="#mission">Mission</a>
     <a href="#goals">Goals</a>
     <a href="#swot">SWOT</a>
+    <a href="#team">Team</a>
     <a href="#contact">Contact</a>
   </nav>
   <div class="hamburger" onclick="toggleMenu()">☰</div>
@@ -239,6 +256,7 @@
   <a href="#mission" onclick="toggleMenu()">Mission</a>
   <a href="#goals" onclick="toggleMenu()">Goals</a>
   <a href="#swot" onclick="toggleMenu()">SWOT</a>
+  <a href="#team" onclick="toggleMenu()">Team</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
 </div>
 
@@ -313,7 +331,8 @@
     </tr>
   </table>
 </section>
-  <section id="team">
+
+<section id="team">
   <h2>Meet the Team</h2>
   <div class="cards">
     <div class="card">
@@ -335,7 +354,7 @@
       <p><strong>Email:</strong> jane@missgfoundation.org</p>
     </div>
   </div>
-  </section>
+</section>
 
 <section id="contact">
   <h2>Contact Us</h2>
@@ -363,4 +382,4 @@
 </script>
 
 </body>
-    </html>
+  </html>
