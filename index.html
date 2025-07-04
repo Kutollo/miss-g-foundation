@@ -33,7 +33,7 @@
       position: fixed;
       width: 100%;
       top: 0;
-      z-index: 999;
+      z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -72,15 +72,14 @@
       padding: 1rem 2rem;
     }
 
+    .mobile-menu.show {
+      display: flex;
+    }
+
     .mobile-menu a {
       color: var(--white);
       text-decoration: none;
       padding: 0.5rem 0;
-      font-weight: 500;
-    }
-
-    .mobile-menu.show {
-      display: flex;
     }
 
     .hero {
@@ -159,6 +158,29 @@
       border-radius: 10px;
     }
 
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .member {
+      text-align: center;
+    }
+
+    .member img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .member h4 {
+      margin-bottom: 0.5rem;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -173,6 +195,30 @@
 
     th {
       background: #ede7f6;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    input, textarea {
+      padding: 0.8rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 0.8rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
     }
 
     footer {
@@ -200,9 +246,7 @@
   <nav>
     <a href="#about">About</a>
     <a href="#programs">Programs</a>
-    <a href="#mission">Mission</a>
-    <a href="#goals">Goals</a>
-    <a href="#swot">SWOT</a>
+    <a href="#team">Team</a>
     <a href="#contact">Contact</a>
   </nav>
   <div class="hamburger" onclick="toggleMenu()">☰</div>
@@ -211,9 +255,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about" onclick="toggleMenu()">About</a>
   <a href="#programs" onclick="toggleMenu()">Programs</a>
-  <a href="#mission" onclick="toggleMenu()">Mission</a>
-  <a href="#goals" onclick="toggleMenu()">Goals</a>
-  <a href="#swot" onclick="toggleMenu()">SWOT</a>
+  <a href="#team" onclick="toggleMenu()">Team</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
 </div>
 
@@ -225,75 +267,63 @@
 
 <section id="about">
   <h2>About Us</h2>
-  <p>Miss G Foundation is a youth-centered, faith-driven nonprofit in Bushbuckridge, South Africa. Founded by Miss G, our mission is to equip and uplift youth and families through education, mentorship, and spiritual guidance.</p>
+  <p>Miss G Foundation is a youth-centered, faith-driven nonprofit in Bushbuckridge, South Africa. We uplift youth and families through education, mentorship, spiritual growth, and community empowerment.</p>
 </section>
 
 <section id="programs">
-  <h2>Our Programs</h2>
+  <h2>Programs</h2>
   <div class="cards">
     <div class="card">
       <h3>🎓 Career Talks</h3>
-      <p>Motivational sessions, subject choices & career guidance for students.</p>
+      <p>Subject choice guidance and mentorship at schools.</p>
     </div>
     <div class="card">
-      <h3>⛪ Church Outreach</h3>
-      <p>Youth worship nights, Sunday school sessions, and family development talks.</p>
+      <h3>⛪ Church Sessions</h3>
+      <p>Youth nights, Sunday school, and family life programs.</p>
     </div>
     <div class="card">
-      <h3>🏡 Community Campaigns</h3>
-      <p>Awareness on GBV, mental health, substance abuse and community healing.</p>
+      <h3>🏡 Campaigns</h3>
+      <p>Community awareness on GBV, mental health, and more.</p>
     </div>
     <div class="card">
-      <h3>📝 University Support</h3>
-      <p>Application help for university, TVET, learnerships and bursaries.</p>
+      <h3>📝 Application Help</h3>
+      <p>Support for university, TVET, bursaries and learnerships.</p>
     </div>
   </div>
 </section>
 
-<section id="mission">
-  <h2>Mission, Vision & Values</h2>
-  <p><strong>Mission:</strong> Empower youth and families through faith, education, and community support.</p>
-  <p><strong>Vision:</strong> A purpose-driven generation rising to transform their world.</p>
-  <p><strong>Values:</strong> Faith, Empowerment, Integrity, Compassion, Community.</p>
-</section>
-
-<section id="goals">
-  <h2>Goals & Objectives</h2>
-  <ul>
-    <li>💡 Reach 20+ schools annually with career talks & mentorship</li>
-    <li>💡 Launch a Youth Empowerment Center</li>
-    <li>💡 Build a bursary & learnership fund</li>
-    <li>💡 Run quarterly awareness campaigns</li>
-  </ul>
-</section>
-
-<section id="swot">
-  <h2>SWOT Analysis</h2>
-  <table>
-    <tr>
-      <th>Strengths</th>
-      <th>Weaknesses</th>
-    </tr>
-    <tr>
-      <td>Strong community trust, youth-led team, faith foundation</td>
-      <td>Limited funding, no permanent office, small digital reach</td>
-    </tr>
-    <tr>
-      <th>Opportunities</th>
-      <th>Threats</th>
-    </tr>
-    <tr>
-      <td>Local partnerships, government grants, social media growth</td>
-      <td>Donor fatigue, infrastructure challenges, community instability</td>
-    </tr>
-  </table>
+<section id="team">
+  <h2>Meet The Team</h2>
+  <div class="team">
+    <div class="member">
+      <img src="https://via.placeholder.com/150" alt="Miss G" />
+      <h4>Miss G</h4>
+      <p>Founder</p>
+      <p>Email: missg@missgfoundation.org</p>
+    </div>
+    <div class="member">
+      <img src="https://via.placeholder.com/150" alt="Co-Founder" />
+      <h4>Jane Doe</h4>
+      <p>Co-Founder</p>
+      <p>Email: jane@missgfoundation.org</p>
+    </div>
+    <div class="member">
+      <img src="https://via.placeholder.com/150" alt="Team Member" />
+      <h4>John Smith</h4>
+      <p>Youth Mentor</p>
+      <p>Email: john@missgfoundation.org</p>
+    </div>
+  </div>
 </section>
 
 <section id="contact">
   <h2>Contact Us</h2>
-  <p><strong>Email:</strong> info@missgfoundation.org</p>
-  <p><strong>Phone:</strong> +27 000 000 0000</p>
-  <p><strong>Location:</strong> Bushbuckridge, South Africa</p>
+  <form action="https://formspree.io/f/your-form-id" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="_replyto" placeholder="Your Email" required />
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
 </section>
 
 <footer>
@@ -308,4 +338,4 @@
 </script>
 
 </body>
-    </html>
+  </html>
