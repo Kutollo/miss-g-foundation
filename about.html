@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us – SM's Foundation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
+  <style>
+    :root {
+      --primary: #6a1b9a;
+      --light-purple: #f3e5f5;
+      --white: #fff;
+      --text: #333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .logo img {
+      height: 36px;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--primary);
+      position: fixed;
+      top: 64px;
+      left: 0;
+      width: 60%;
+      padding: 1rem;
+      border-radius: 0 0 10px 0;
+      z-index: 998;
+    }
+
+    .mobile-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 0.6rem 0;
+    }
+
+    .mobile-menu.show {
+      display: flex;
+    }
+
+    main {
+      padding: 60px 20px 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .cards, .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .card, .team-member {
+      background: var(--light-purple);
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .card h3, .team-member h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 1rem;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      background-color: #ede7f6;
+      color: var(--primary);
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      border: 3px solid var(--primary);
+    }
+
+    .team-member p.email {
+      font-size: 0.9rem;
+      color: #444;
+      margin-top: 6px;
+      word-wrap: break-word;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .mobile-menu.show {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo" />
+      SM's Foundation
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="get-involved.html">Get Involved</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="get-involved.html">Get Involved</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+    <h1>About SM's Foundation</h1>
+    <p style="text-align:center;">Empowering youth & families with purpose, faith, and education.</p>
+
+    <h2>Mission, Vision & Values</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Mission</h3>
+        <p>To inspire and equip youth and families to live purposefully and faithfully.</p>
+      </div>
+      <div class="card">
+        <h3>Vision</h3>
+        <p>Building a generation of leaders grounded in love, wisdom, and faith.</p>
+      </div>
+      <div class="card">
+        <h3>Values</h3>
+        <p>Faith, Integrity, Compassion, Empowerment, Excellence.</p>
+      </div>
+    </div>
+
+    <h2>Goals & Objectives</h2>
+    <ul>
+      <li>Run youth empowerment programs monthly</li>
+      <li>Host family enrichment workshops quarterly</li>
+      <li>Promote spiritual growth through Bible-based teachings</li>
+      <li>Offer education and outreach to underserved communities</li>
+    </ul>
+
+    <h2>SWOT Analysis</h2>
+    <table>
+      <tr>
+        <th>Strengths</th>
+        <th>Weaknesses</th>
+      </tr>
+      <tr>
+        <td>Passionate team, clear mission, strong faith foundation</td>
+        <td>Limited funding, still building awareness</td>
+      </tr>
+      <tr>
+        <th>Opportunities</th>
+        <th>Threats</th>
+      </tr>
+      <tr>
+        <td>Community growth, partnerships, social media</td>
+        <td>Economic instability, competition for donor attention</td>
+      </tr>
+    </table>
+
+    <h2>Meet the Team</h2>
+    <div class="team">
+      <div class="team-member">
+        <img src="team1.jpg" alt="Ebenezer Zitha" />
+        <h3>Ebenezer Zitha</h3>
+        <p>Founder & Visionary</p>
+        <p class="email"><em>EbenezerZitha@smfoundation.org</em></p>
+      </div>
+      <div class="team-member">
+        <img src="team2.png" alt="Kutollo Chiloane" />
+        <h3>Kutollo Chiloane</h3>
+        <p>Youth Program Coordinator</p>
+        <p class="email"><em>KutolloChiloane@smfoundation.org</em></p>
+      </div>
+      <div class="team-member">
+        <img src="team3.jpg" alt="Thabo N." />
+        <h3>Thabo N.</h3>
+        <p>Family Outreach Lead</p>
+        <p class="email"><em>Thabo@smfoundation.org</em></p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 SM's Foundation. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('show');
+    }
+  </script>
+
+</body>
+</html>

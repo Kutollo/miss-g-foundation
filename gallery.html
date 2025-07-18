@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery – SM's Foundation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #6a1b9a;
+      --light-purple: #f3e5f5;
+      --white: #fff;
+      --text: #333;
+      --btn-bg: #6a1b9a;
+      --btn-hover: #7e33bb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .logo img {
+      height: 36px;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--primary);
+      position: fixed;
+      top: 64px;
+      left: 0;
+      width: 60%;
+      padding: 1rem;
+      border-radius: 0 0 10px 0;
+      z-index: 998;
+    }
+
+    .mobile-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 0.6rem 0;
+    }
+
+    .mobile-menu.show {
+      display: flex;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 80px auto 40px;
+      padding: 0 20px;
+    }
+
+    h1 {
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-buttons {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-buttons button {
+      background-color: var(--btn-bg);
+      color: var(--white);
+      border: none;
+      padding: 0.6rem 1.2rem;
+      margin: 0 0.3rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .filter-buttons button:hover,
+    .filter-buttons button.active {
+      background-color: var(--btn-hover);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(106, 27, 154, 0.1);
+      opacity: 1;
+      transition: opacity 0.4s ease;
+    }
+
+    .gallery-item.hide {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.95);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .gallery-item img,
+    .gallery-item video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(106, 27, 154, 0.7);
+      color: white;
+      padding: 0.5rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .social-icons {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: flex;
+      gap: 8px;
+      opacity: 0.8;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      opacity: 1;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+      .mobile-menu.show {
+        display: flex;
+      }
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo" />
+      SM's Foundation
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html" aria-current="page">Gallery</a>
+      <a href="get-involved.html">Get Involved</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="get-involved.html">Get Involved</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+    <h1>Gallery</h1>
+
+    <div class="filter-buttons" role="group" aria-label="Filter gallery by category">
+      <button class="active" data-filter="all" aria-pressed="true">All</button>
+      <button data-filter="youth" aria-pressed="false">Youth</button>
+      <button data-filter="family" aria-pressed="false">Family</button>
+      <button data-filter="faith" aria-pressed="false">Faith</button>
+      <button data-filter="education" aria-pressed="false">Education</button>
+      <button data-filter="outreach" aria-pressed="false">Outreach</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Gallery items -->
+      <div class="gallery-item" data-category="youth" tabindex="0">
+        <img src="https://via.placeholder.com/400x250?text=Youth+Event+1" alt="Youth Event 1" />
+        <div class="caption">Youth Event 1</div>
+        <div class="social-icons" aria-label="Share options">
+          <a href="#" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="family" tabindex="0">
+        <img src="https://via.placeholder.com/400x250?text=Family+Gathering" alt="Family Gathering" />
+        <div class="caption">Family Gathering</div>
+        <div class="social-icons" aria-label="Share options">
+          <a href="#" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="faith" tabindex="0">
+        <img src="https://via.placeholder.com/400x250?text=Faith+Gathering" alt="Faith Gathering" />
+        <div class="caption">Faith Gathering</div>
+        <div class="social-icons" aria-label="Share options">
+          <a href="#" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="education" tabindex="0">
+        <img src="https://via.placeholder.com/400x250?text=Education+Workshop" alt="Education Workshop" />
+        <div class="caption">Education Workshop</div>
+        <div class="social-icons" aria-label="Share options">
+          <a href="#" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="gallery-item" data-category="outreach" tabindex="0">
+        <img src="https://via.placeholder.com/400x250?text=Outreach+Program" alt="Outreach Program" />
+        <div class="caption">Outreach Program</div>
+        <div class="social-icons" aria-label="Share options">
+          <a href="#" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <!-- Add more items as needed -->
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 SM's Foundation. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('show');
+    }
+
+    // Filter gallery items
+    const filterButtons = document.querySelectorAll('.filter-buttons button');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active & aria-pressed from all buttons
+        filterButtons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-pressed', 'false');
+        });
+
+        // Add active & aria-pressed to clicked button
+        button.classList.add('active');
+        button.setAttribute('aria-pressed', 'true');
+
+        const filter = button.getAttribute('data-filter');
+
+        galleryItems.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.classList.remove('hide');
+          } else {
+            item.classList.add('hide');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

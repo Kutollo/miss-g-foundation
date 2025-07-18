@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Get Involved – SM's Foundation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #6a1b9a;
+      --light-purple: #f3e5f5;
+      --white: #fff;
+      --text: #333;
+      --btn-bg: #6a1b9a;
+      --btn-hover: #7e33bb;
+      --shadow: rgba(106, 27, 154, 0.15);
+      --accent: #4a148c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .logo img {
+      height: 36px;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--primary);
+      position: fixed;
+      top: 64px;
+      left: 0;
+      width: 60%;
+      padding: 1rem;
+      border-radius: 0 0 10px 0;
+      z-index: 998;
+    }
+
+    .mobile-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 0.6rem 0;
+    }
+
+    .mobile-menu.show {
+      display: flex;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 80px auto 40px;
+      padding: 0 20px;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+    }
+
+    h1 {
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      background: var(--light-purple);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 3px 6px var(--shadow);
+      transition: box-shadow 0.3s ease;
+    }
+
+    section:hover {
+      box-shadow: 0 6px 12px var(--shadow);
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      text-align: center;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    input, textarea {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      width: 100%;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    button {
+      padding: 0.75rem;
+      background-color: var(--btn-bg);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--btn-hover);
+    }
+
+    .donate-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .donate-buttons button {
+      min-width: 140px;
+      padding: 0.7rem 1.5rem;
+      box-shadow: 0 2px 5px var(--shadow);
+      font-weight: 600;
+    }
+
+    .donation-info {
+      max-width: 600px;
+      margin: 0.5rem auto 0;
+      font-size: 0.9rem;
+      color: #555;
+      text-align: center;
+    }
+
+    /* FAQ Accordion Styles */
+    .faq {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .faq-question {
+      cursor: pointer;
+      padding: 15px 20px;
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      background: #f9f7fd;
+      color: var(--text);
+      line-height: 1.5;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding: 15px 20px;
+    }
+    .faq-icon {
+      font-size: 1.4rem;
+      transition: transform 0.3s ease;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* Testimonial slider */
+    .testimonials {
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      position: relative;
+      text-align: center;
+    }
+    .testimonial {
+      display: none;
+      padding: 20px;
+      background: var(--light-purple);
+      border-radius: 10px;
+      box-shadow: 0 3px 6px var(--shadow);
+      font-style: italic;
+      color: #444;
+    }
+    .testimonial.active {
+      display: block;
+    }
+    .testimonial-author {
+      margin-top: 12px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .testimonial-nav {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .testimonial-nav button {
+      background: var(--primary);
+      border: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+    .testimonial-nav button.active,
+    .testimonial-nav button:hover {
+      opacity: 1;
+    }
+
+    /* Floating donate button */
+    #donateFloatBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--btn-bg);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 22px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(106,27,154,0.4);
+      transition: background-color 0.3s ease;
+      z-index: 1000;
+    }
+    #donateFloatBtn:hover {
+      background-color: var(--btn-hover);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+      .mobile-menu.show {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo" />
+      SM's Foundation
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="get-involved.html" aria-current="page">Get Involved</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="get-involved.html">Get Involved</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+    <h1>Get Involved</h1>
+
+    <section id="volunteer">
+      <h2>Volunteer With Us</h2>
+      <p>Join our passionate team and make a real impact in the community! Whether you can spare a few hours or want to help regularly, we welcome your energy and skills.</p>
+      <form action="https://formspree.io/f/your-form-id" method="POST">
+        <input type="text" name="name" placeholder="Your Full Name" required />
+        <input type="email" name="_replyto" placeholder="Your Email" required />
+        <input type="tel" name="phone" placeholder="Phone Number (optional)" />
+        <textarea name="message" rows="4" placeholder="Tell us about your skills or how you'd like to help" required></textarea>
+        <button type="submit">Sign Up to Volunteer</button>
+      </form>
+    </section>
+
+    <section id="donate">
+      <h2>Support Us With Donations</h2>
+      <p>Your generosity helps us sustain and grow our programs. Choose a donation amount or get in touch for other options.</p>
+
+      <div class="donate-buttons">
+        <button onclick="alert('Redirecting to R100 donation page (placeholder)')">Donate R100</button>
+        <button onclick="alert('Redirecting to R250 donation page (placeholder)')">Donate R250</button>
+        <button onclick="alert('Redirecting to R500 donation page (placeholder)')">Donate R500</button>
+        <button onclick="alert('Redirecting to Custom donation page (placeholder)')">Custom Amount</button>
+      </div>
+
+      <div class="donation-info">
+        <p><strong>Bank Transfer:</strong> SM's Foundation, Standard Bank, Account No: 123456789, Branch Code: 012345</p>
+        <p><strong>Mobile Payment:</strong> Use <em>SnapScan</em> or <em>PayFast</em> for easy mobile donations.</p>
+        <p><strong>Contact:</strong> For bulk or in-kind donations, email <a href="mailto:donations@smsfoundation.org">donations@smsfoundation.org</a></p>
+      </div>
+    </section>
+
+    <section id="partners">
+      <h2>Partner With Us</h2>
+      <p>We collaborate with local businesses, schools, and organizations to expand our impact. If your organization is interested in partnering, please get in touch.</p>
+      <p style="text-align: center;">
+        <a href="mailto:partners@smsfoundation.org" style="color: var(--primary); font-weight: 600;">partners@smsfoundation.org</a>
+      </p>
+    </section>
+
+    <section id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            How do I volunteer?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            Fill out the volunteer form above and our team will contact you with opportunities that match your skills and availability.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            Can I donate in-kind items?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            Yes! We accept non-monetary donations such as clothing, books, and food. Please email us for details.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            Is my donation tax-deductible?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            SM's Foundation is registered as a non-profit organization, and donations are tax-deductible. Contact us for your donation receipt.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <h2>What Our Volunteers Say</h2>
+      <div class="testimonials">
+        <div class="testimonial active">
+          <p>"Volunteering with SM's Foundation changed my life. The team is welcoming and the impact is real!"</p>
+          <div class="testimonial-author">- Thandi M.</div>
+        </div>
+        <div class="testimonial">
+          <p>"I love how SM's Foundation empowers youth in our community. Proud to be part of it."</p>
+          <div class="testimonial-author">- Sipho K.</div>
+        </div>
+        <div class="testimonial">
+          <p>"Their donation process is simple, and I trust my contributions go to good use."</p>
+          <div class="testimonial-author">- Amanda R.</div>
+        </div>
+
+        <div class="testimonial-nav">
+          <button onclick="showTestimonial(0)" class="active"></button>
+          <button onclick="showTestimonial(1)"></button>
+          <button onclick="showTestimonial(2)"></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button id="donateFloatBtn" onclick="alert('Redirecting to donation page (placeholder)')">Donate Now</button>
+
+  <footer>
+    &copy; 2025 SM's Foundation. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('show');
+    }
+
+    // FAQ toggle
+    function toggleFAQ(el) {
+      const item = el.parentElement;
+      item.classList.toggle('active');
+    }
+
+    // Testimonial slider
+    const testimonials = document.querySelectorAll('.testimonial');
+    const navButtons = document.querySelectorAll('.testimonial-nav button');
+    function showTestimonial(index) {
+      testimonials.forEach((t, i) => {
+        t.classList.toggle('active', i === index);
+        navButtons[i].classList.toggle('active', i === index);
+      });
+    }
+  </script>
+</body>
+</html>

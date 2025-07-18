@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Programs – SM's Foundation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #6a1b9a;
+      --light-purple: #f3e5f5;
+      --white: #fff;
+      --text: #333;
+      --card-hover: #7e33bb;
+      --card-selected: #5a1577;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .logo img {
+      height: 36px;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--primary);
+      position: fixed;
+      top: 64px;
+      left: 0;
+      width: 60%;
+      padding: 1rem;
+      border-radius: 0 0 10px 0;
+      z-index: 998;
+    }
+
+    .mobile-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 0.6rem 0;
+    }
+
+    .mobile-menu.show {
+      display: flex;
+    }
+
+    main {
+      padding: 60px 20px 40px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    #search-box {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px 15px;
+      margin-bottom: 2rem;
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--light-purple);
+      border-radius: 12px;
+      padding: 1.5rem 1.2rem;
+      box-shadow: 0 4px 6px rgba(106, 27, 154, 0.1);
+      cursor: pointer;
+      color: var(--primary);
+      user-select: none;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .card:hover,
+    .card.selected {
+      background: var(--card-selected);
+      color: var(--white);
+      box-shadow: 0 8px 15px rgba(106, 27, 154, 0.4);
+    }
+
+    .card h3 {
+      margin-bottom: 0.8rem;
+      user-select: text;
+    }
+
+    .card p {
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-bottom: 0;
+      user-select: text;
+    }
+
+    .card-details {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      display: none;
+      user-select: text;
+    }
+
+    .card.selected .card-details {
+      display: block;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .mobile-menu.show {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo" />
+      SM's Foundation
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html" aria-current="page">Programs</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="get-involved.html">Get Involved</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="get-involved.html">Get Involved</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+    <h1>Our Programs</h1>
+    <input
+      type="search"
+      id="search-box"
+      placeholder="Search programs..."
+      aria-label="Search programs"
+      oninput="filterPrograms()"
+    />
+    <div class="cards" id="programCards">
+      <div class="card" tabindex="0" aria-expanded="false" aria-controls="details1" role="button" onclick="toggleDetails(this)" onkeypress="if(event.key==='Enter'){toggleDetails(this);}">
+        <h3>👥 Youth Empowerment</h3>
+        <p>Workshops, mentorship, career talks, and leadership training designed to inspire youth.</p>
+        <div class="card-details" id="details1">
+          <p>Includes leadership bootcamps, life skills development, and scholarships awareness.</p>
+        </div>
+      </div>
+      <div class="card" tabindex="0" aria-expanded="false" aria-controls="details2" role="button" onclick="toggleDetails(this)" onkeypress="if(event.key==='Enter'){toggleDetails(this);}">
+        <h3>🏡 Family Support</h3>
+        <p>Programs to strengthen families including parenting workshops, counseling, and community support.</p>
+        <div class="card-details" id="details2">
+          <p>Focus on communication skills, mental health, and family bonding activities.</p>
+        </div>
+      </div>
+      <div class="card" tabindex="0" aria-expanded="false" aria-controls="details3" role="button" onclick="toggleDetails(this)" onkeypress="if(event.key==='Enter'){toggleDetails(this);}">
+        <h3>⛪ Faith-Based Initiatives</h3>
+        <p>Spiritual growth through worship events, Bible studies, and youth faith groups.</p>
+        <div class="card-details" id="details3">
+          <p>Includes prayer meetings, retreats, and community worship gatherings.</p>
+        </div>
+      </div>
+      <div class="card" tabindex="0" aria-expanded="false" aria-controls="details4" role="button" onclick="toggleDetails(this)" onkeypress="if(event.key==='Enter'){toggleDetails(this);}">
+        <h3>📚 Education Assistance</h3>
+        <p>Scholarship info, study groups, application help, and resources for learners.</p>
+        <div class="card-details" id="details4">
+          <p>Support with university applications, bursary applications, and tutoring.</p>
+        </div>
+      </div>
+      <div class="card" tabindex="0" aria-expanded="false" aria-controls="details5" role="button" onclick="toggleDetails(this)" onkeypress="if(event.key==='Enter'){toggleDetails(this);}">
+        <h3>🤝 Community Outreach</h3>
+        <p>Awareness campaigns on health, social issues, and community service projects.</p>
+        <div class="card-details" id="details5">
+          <p>Includes GBV awareness, mental health support, and environmental cleanups.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 SM's Foundation. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('show');
+    }
+
+    function toggleDetails(card) {
+      const isSelected = card.classList.contains('selected');
+      // Remove selected from all cards
+      document.querySelectorAll('.card').forEach(c => {
+        c.classList.remove('selected');
+        c.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isSelected) {
+        card.classList.add('selected');
+        card.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function filterPrograms() {
+      const filter = document.getElementById('search-box').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const desc = card.querySelector('p').textContent.toLowerCase();
+        if (title.includes(filter) || desc.includes(filter)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
